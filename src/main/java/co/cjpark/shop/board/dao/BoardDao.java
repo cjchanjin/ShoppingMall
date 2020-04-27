@@ -3,6 +3,7 @@ package co.cjpark.shop.board.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
@@ -19,6 +20,8 @@ public class BoardDao implements BoardService {
 	private PreparedStatement psmt;
 	private ResultSet rs;
 	
+	public SimpleDateFormat sf = new SimpleDateFormat("yyy-MM-dd");
+	
 //	@Autowired
 //	private BoardVo boardVo;
 	@Resource(name="boardVo")
@@ -26,6 +29,8 @@ public class BoardDao implements BoardService {
 	
 	private final String SELECT_ALL="select * from board";
 	private final String SELECT = "select * from board where boardid=?";
+	private final String INSERT = "insert into board values (b_num.nextval, ?, ?, ?, ?, 0, ?)";
+	private final String DELETE = "delete from board where boardid=?";
 	
 	public ArrayList<BoardVo> select() {
 		ArrayList<BoardVo> list = new ArrayList<BoardVo>();
@@ -38,7 +43,7 @@ public class BoardDao implements BoardService {
 				boardVo.setBoardId(rs.getInt("boardId"));
 				boardVo.setWriter(rs.getString("writer"));
 				boardVo.setTitle(rs.getString("title"));
-				boardVo.setwDate(rs.getString("wDate"));
+				boardVo.setwDate(sf.format(rs.getDate("wDate")));
 				boardVo.setHit(rs.getInt("hit"));
 				boardVo.setFileName(rs.getString("fileName"));
 				list.add(boardVo);
@@ -62,7 +67,8 @@ public class BoardDao implements BoardService {
 				vo.setBoardId(rs.getInt("boardId"));
 				vo.setWriter(rs.getString("writer"));
 				vo.setTitle(rs.getString("title"));
-				vo.setwDate(rs.getDate("wDate"));	//Date ->String parse
+				vo.setwDate(sf.format(rs.getDate("wDate")));	//Date ->String parse
+				vo.setContents(rs.getString("contents"));
 				vo.setHit(rs.getInt("hit"));
 				vo.setFileName(rs.getString("fileName"));
 			}
@@ -75,8 +81,20 @@ public class BoardDao implements BoardService {
 
 	@Override
 	public int insert(BoardVo boardVo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int n = 0;
+		
+		try {
+			psmt = conn.prepareStatement(INSERT);
+			psmt.setString(1, boardVo.getWriter());
+			psmt.setString(2, boardVo.getwDate());
+			psmt.setString(3, boardVo.getTitle());
+			psmt.setString(4, boardVo.getContents());
+			psmt.setString(5, boardVo.getFileName());
+			n = psmt.executeUpdate();			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
 	}
 
 	@Override
@@ -87,7 +105,14 @@ public class BoardDao implements BoardService {
 
 	@Override
 	public int delete(int boardId) {
-		// TODO Auto-generated method stub
-		return 0;
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement(DELETE);
+			psmt.setInt(1, boardId);
+			n = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
 	}
 }

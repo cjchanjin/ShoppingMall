@@ -15,6 +15,8 @@
 <P>  이곳은 잘판다 쇼핑몰 홈 페이지 입니다.</P>
 <a href="login.do">로그인 하기</a><br />
 <a href="sum.do">계산기 호출</a><br />
-<a href="boardList.do">게시글 목록 호출</a>
+<a href="boardList.do">게시글 목록 호출</a><br />
+<a href="memberJoin.do">회원가입</a><br />
+<a href="memberList.do">회원목록</a>
 </body>
 </html>

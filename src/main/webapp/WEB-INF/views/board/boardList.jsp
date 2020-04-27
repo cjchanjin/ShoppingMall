@@ -30,7 +30,7 @@
 				<td width="150">첨부파일</td>				
 			</tr>
 			<c:forEach var="vo" items="${board }">
-				<tr onclick=trSelect()>
+				<tr onclick="trSelect(${vo.boardId})">
 					<td>${vo.boardId }</td>
 					<td>${vo.writer }</td>
 					<td>${vo.title }</td>
@@ -40,6 +40,11 @@
 				</tr>
 			</c:forEach>
 		</table>
+	</div>
+	<div>
+		<br />
+		<button type="button" onclick="location.href='boardInputForm.do' ">글쓰기</button>
+		<button type="button" onclick="location.href='/shop' ">홈</button>
 	</div>
 	<div>
 		<form id="frm" name="frm" action="boardGetList.do" method="post">
