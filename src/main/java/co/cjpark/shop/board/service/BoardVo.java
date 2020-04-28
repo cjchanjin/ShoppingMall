@@ -1,7 +1,5 @@
 package co.cjpark.shop.board.service;
 
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 //@Component("boardVo")		독립적으로 하는애들 ex 'calculator' 같은
 //@Service("boardVo")		추천하는 방법(구체적으로 무엇을 해야하는 것들->서비스 객체)

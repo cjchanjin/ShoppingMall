@@ -30,7 +30,7 @@
 				<td width="150">첨부파일</td>				
 			</tr>
 			<c:forEach var="vo" items="${board }">
-				<tr onclick="trSelect(${vo.boardId})">
+				<tr onclick="trSelect(${vo.boardId})" onMouseOver="this.style.backgroundColor='silver';" onMouseOut="this.style.backgroundColor='';">
 					<td>${vo.boardId }</td>
 					<td>${vo.writer }</td>
 					<td>${vo.title }</td>

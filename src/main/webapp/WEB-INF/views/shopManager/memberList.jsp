@@ -28,6 +28,9 @@
 		사용자 수 : ${vo.mEmployeeNum }<br>
 	=============================	<br>	
 	</c:forEach>
+	<div>
+		<button type="button" id="btnHome" name="btnHome" onclick="location.href='/shop' ">홈</button>
+	</div>
 </div>
 </body>
 </html>

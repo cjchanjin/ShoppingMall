@@ -15,6 +15,7 @@ public class ShopManagerServiceImpl implements ShopManagerService {
 
 	@Autowired
 	ShopManagerDao dao;
+	
 	@Override
 	public ArrayList<CompanyMasterVo> selectList() throws SQLException {
 		// TODO Auto-generated method stub

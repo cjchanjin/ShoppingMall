@@ -8,6 +8,7 @@
 	<title>Shop Mall</title>
 </head>
 <body>
+<div align="center">
 <h1>
 	Hello world!  
 </h1>
@@ -18,5 +19,6 @@
 <a href="boardList.do">게시글 목록 호출</a><br />
 <a href="memberJoin.do">회원가입</a><br />
 <a href="memberList.do">회원목록</a>
+</div>
 </body>
 </html>
