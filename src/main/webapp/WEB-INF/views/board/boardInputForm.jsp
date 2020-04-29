@@ -15,17 +15,17 @@
 	<table border="1">
 		<tr>
 			<td>작성자</td>
-			<td><input type="text" id="writer" name="writer"></td>
+			<td><input type="text" id="writer" name="writer" required></td>
 			<td>작성일자</td>
-			<td><input type="date" id="wDate" name="wDate"></td>
+			<td><input type="date" id="wDate" name="wDate" required></td>
 		</tr>
 		<tr>
 			<td>제목</td>
-			<td colspan="3"><input type="text" id="title" name="title"></td>
+			<td colspan="3"><input type="text" id="title" name="title" required></td>
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td colspan="3"><input type="text" id="contents" name="contents"></td>
+			<td colspan="3"><input type="text" id="contents" name="contents" required></td>
 		</tr>
 		<tr>
 			<td>첨부파일</td>
@@ -41,6 +41,7 @@
 		</div>
 	</form>
 </div>
+
 <script>
    //글 등록 재확인 
 function checkInput() {
@@ -51,5 +52,6 @@ function checkInput() {
       }
    }
 </script>
+
 </body>
 </html>

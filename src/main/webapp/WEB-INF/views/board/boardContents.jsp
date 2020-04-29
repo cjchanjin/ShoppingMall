@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>	
+
+
 </head>
 <body>
 <div align="center">
@@ -28,7 +30,7 @@
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td colspan="7"> ${view.contents }</td>
+			<td colspan="7" > ${view.contents }</td>
 		</tr>
 		<tr>
 			<td>첨부파일</td>
@@ -40,8 +42,27 @@
 		<br />
 		<button type="button" onclick="location.href='boardList.do' ">글목록</button>
 		<button type="button" onclick="location.href='#' ">수정</button>
-		<button type="button" onclick="location.href='boardDelete.do' ">삭제</button>
+		<button type="button" onclick="boardDelete()">삭제</button>
 		<button type="button" onclick="location.href='/shop' ">홈</button>
 	</div>
+	<div>
+		<form id="frmDelete" name="frmDelete" action="boardDelete.do" method="post">
+			<input type="hidden" name="boardId" value="${view.boardId }">
+		</form>
+	</div>
+	
+<script type="text/javascript">
+	function boardDelete() {
+		var form = document.getElementById("frmDelete");
+		
+		if(confirm("정말 삭제 하시겠습니까??") == true) {
+			form.submit();
+		} else{
+			return;
+		}
+	}
+	
+</script>
+	
 </body>
 </html>
